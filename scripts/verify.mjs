@@ -189,7 +189,7 @@ const BASURA = [
   [/[\u0600-\u06ff\u0750-\u077f]/g, "caracteres arabes"],
   [/[\u0980-\u09ff]/g, "caracteres devanagari"],
 ];
-const EXT = new Set([".html", ".css", ".md", ".json", ".jsonc", ".mjs", ".txt", ".yml"]);
+const EXT = new Set([".html", ".css", ".md", ".json", ".jsonc", ".mjs", ".txt", ".yml", ".xml"]);
 const SALTAR = new Set([".git", "node_modules"]);
 const escaneados = [];
 

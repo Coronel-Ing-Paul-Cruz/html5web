@@ -3,12 +3,22 @@
    --------------------------------------------------------------------------
    Las tipografías son del sistema, así que no hay nada que pueda dar 404.
 
-   Contraste verificado contra WCAG AA (4.5:1) y en la mayoría de casos AAA:
-     --texto   #1a1a1a sobre #ffffff  -> 17.4:1
-     --tenue   #444444 sobre #ffffff  ->  9.7:1
-     --enlace  #0b4f9e sobre #ffffff  ->  8.0:1
-     --texto   #1a1a1a sobre #f6f8fa  -> 16.9:1
-     --enlace  #0b4f9e sobre #f6f8fa  ->  7.7:1
+   Contraste verificado contra WCAG AA (4.5:1) y en todos los casos AAA (7:1).
+   Los nueve pares que existen en la hoja, con su ratio real:
+
+     --texto            #1a1a1a sobre #ffffff  -> 17.40:1
+     --tenue            #444444 sobre #ffffff  ->  9.74:1
+     --enlace           #0b4f9e sobre #ffffff  ->  8.00:1
+     --acento           #0b4f9e sobre #ffffff  ->  8.00:1
+     --enlace-visitado  #6a3d9a sobre #ffffff  ->  7.64:1
+     --tenue            #444444 sobre #f6f8fa  ->  9.15:1
+     --texto            #1a1a1a sobre #f6f8fa  -> 16.35:1
+     --enlace           #0b4f9e sobre #f6f8fa  ->  7.51:1
+     --enlace-visitado  #6a3d9a sobre #f6f8fa  ->  7.18:1   <- el más ajustado
+
+   El más ajustado es el enlace visitado sobre el fondo suave: 7.18:1, es decir
+   0.18 por encima del umbral AAA. Si alguna vez se aclara --enlace-visitado,
+   hay que volver a medir ese par antes de publicar.
    ========================================================================== */
 
 /* --------------------------------------------------------------- 1. tokens */

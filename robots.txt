@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://coronel-ing-paul-cruz.github.io/html5web/sitemap.xml
