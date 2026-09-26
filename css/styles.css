@@ -254,6 +254,28 @@ a:visited {
 }
 
 /* ---------------------------------------------------- 9. tarjetas de riesgo */
+.riesgo__subindice {
+  margin-block: 1.25rem 0.25rem;
+}
+
+.riesgo__subindice-titulo {
+  font-size: var(--paso-1);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tenue);
+  margin-bottom: 0.6rem;
+}
+
+/* Los enlaces van sobre el fondo de la pagina, no sobre --fondo-suave:
+   es el par --enlace sobre --fondo, 8.00:1, ya documentado arriba. */
+.riesgo__subindice-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  font-size: var(--paso-1);
+}
+
 .riesgo__rejilla {
   display: grid;
   gap: var(--paso-3);

@@ -177,8 +177,17 @@
         ciberseguridad y porque una cuenta mal protegida es un riesgo operativo, no financiero.
       </p>
 
+      <nav class="riesgo__subindice" aria-label="Las tres medidas, en detalle">
+        <p class="riesgo__subindice-titulo">En detalle</p>
+        <ul class="riesgo__subindice-lista">
+          <li><a href="#verificacion-dos-pasos">Verificación en dos pasos</a></li>
+          <li><a href="#api-solo-lectura">Claves de API de solo lectura</a></li>
+          <li><a href="#stop-loss">Stop-loss definido antes de entrar</a></li>
+        </ul>
+      </nav>
+
       <div class="riesgo__rejilla">
-        <article class="riesgo__tarjeta">
+        <article class="riesgo__tarjeta" id="verificacion-dos-pasos">
           <h3 class="riesgo__tarjeta-titulo">Verificación en dos pasos</h3>
           <p>
             Active el segundo factor en la plataforma, en el correo y en el banco. El correo
@@ -187,7 +196,7 @@
           </p>
         </article>
 
-        <article class="riesgo__tarjeta">
+        <article class="riesgo__tarjeta" id="api-solo-lectura">
           <h3 class="riesgo__tarjeta-titulo">Claves de API de solo lectura</h3>
           <p>
             Las claves que uso para consultar datos nunca pueden retirar fondos. Restringirlas
@@ -195,7 +204,7 @@
           </p>
         </article>
 
-        <article class="riesgo__tarjeta">
+        <article class="riesgo__tarjeta" id="stop-loss">
           <h3 class="riesgo__tarjeta-titulo">Stop-loss definido antes de entrar</h3>
           <p>
             El nivel de invalidación se decide antes de abrir la posición, nunca se ajusta
