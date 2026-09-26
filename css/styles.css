@@ -1,9 +1,7 @@
 /* ==========================================================================
    Mercados que opero — hoja de estilos
    --------------------------------------------------------------------------
-   Enfoque: mobile-first, tipografía fluida con clamp(), rejilla que se
-   adapta sola con repeat(auto-fill, minmax()) y cero peticiones de red
-   (las tipografías son del sistema, así que no hay nada que pueda dar 404).
+   Las tipografías son del sistema, así que no hay nada que pueda dar 404.
 
    Contraste verificado contra WCAG AA (4.5:1) y en la mayoría de casos AAA:
      --texto   #1a1a1a sobre #ffffff  -> 17.4:1
