@@ -1,0 +1,346 @@
+/* ==========================================================================
+   Mercados que opero — hoja de estilos
+   --------------------------------------------------------------------------
+   Enfoque: mobile-first, tipografía fluida con clamp(), rejilla que se
+   adapta sola con repeat(auto-fill, minmax()) y cero peticiones de red
+   (las tipografías son del sistema, así que no hay nada que pueda dar 404).
+
+   Contraste verificado contra WCAG AA (4.5:1) y en la mayoría de casos AAA:
+     --texto   #1a1a1a sobre #ffffff  -> 17.4:1
+     --tenue   #444444 sobre #ffffff  ->  9.7:1
+     --enlace  #0b4f9e sobre #ffffff  ->  8.0:1
+     --texto   #1a1a1a sobre #f6f8fa  -> 16.9:1
+     --enlace  #0b4f9e sobre #f6f8fa  ->  7.7:1
+   ========================================================================== */
+
+/* --------------------------------------------------------------- 1. tokens */
+:root {
+  --texto: #1a1a1a;
+  --tenue: #444444;
+  --enlace: #0b4f9e;
+  --enlace-visitado: #6a3d9a;
+  --borde: #d0d7de;
+  --fondo: #ffffff;
+  --fondo-suave: #f6f8fa;
+  --acento: #0b4f9e;
+
+  --fuente-texto: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fuente-titulo: Georgia, "Times New Roman", "Iowan Old Style", serif;
+
+  --medida: 68ch;
+  --ancho-max: 46rem;
+  --radio: 6px;
+  --sombra: 0 1px 2px rgba(26, 26, 26, 0.06), 0 4px 12px rgba(26, 26, 26, 0.05);
+
+  --paso-1: 0.875rem;
+  --paso-2: 1rem;
+  --paso-3: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  --paso-4: clamp(1.5rem, 1.25rem + 1.25vw, 2.125rem);
+  --paso-5: clamp(2rem, 1.5rem + 2.5vw, 3.25rem);
+}
+
+/* ----------------------------------------------------------------- 2. reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body,
+h1, h2, h3, p, figure, blockquote, ul, ol {
+  margin: 0;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ------------------------------------------------------------ 3. tipografía */
+body {
+  font-family: var(--fuente-texto);
+  font-size: var(--paso-2);
+  line-height: 1.65;
+  color: var(--texto);
+  background-color: var(--fondo);
+  /* Evita que una palabra larga (una URL) rompa la maqueta en móvil */
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulo);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  /* Reparte las líneas de los títulos de forma más uniforme */
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: var(--paso-4);
+  margin-block: 0 0.5em;
+}
+
+h3 {
+  font-size: var(--paso-3);
+  margin-block: 0 0.4em;
+}
+
+p {
+  max-width: var(--medida);
+  margin-block: 0 1em;
+}
+
+a {
+  color: var(--enlace);
+  /* El color no es el único indicador: el subrayado siempre está presente.
+     Si se quita el subrayado en :hover, el cambio de grosor lo delata igual. */
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 0.08em;
+}
+
+a:hover {
+  text-decoration-thickness: 0.16em;
+}
+
+a:visited {
+  color: var(--enlace-visitado);
+}
+
+/* Foco visible y con contraste suficiente en todos los navegadores */
+:focus-visible {
+  outline: 3px solid var(--acento);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ------------------------------------------------- 4. enlace de salto */
+.saltar-al-contenido {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10;
+  padding: 0.75rem 1rem;
+  background-color: var(--fondo);
+  color: var(--enlace);
+  font-weight: 600;
+  border: 2px solid var(--acento);
+  border-radius: 0 0 var(--radio) 0;
+}
+
+.saltar-al-contenido:focus {
+  left: 0;
+}
+
+/* ------------------------------------------------------------ 5. cabecera */
+.cabecera {
+  max-width: var(--ancho-max);
+  margin-inline: auto;
+  padding: var(--paso-5) var(--paso-3) var(--paso-4);
+  border-bottom: 1px solid var(--borde);
+}
+
+.cabecera__etiqueta {
+  font-size: var(--paso-1);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--enlace);
+  margin-bottom: 0.5rem;
+}
+
+.cabecera__titulo {
+  font-size: var(--paso-5);
+  margin-bottom: 0.5rem;
+}
+
+.cabecera__intro {
+  color: var(--tenue);
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------- 6. índice */
+.indice {
+  max-width: var(--ancho-max);
+  margin-inline: auto;
+  padding: var(--paso-4) var(--paso-3);
+  border-bottom: 1px solid var(--borde);
+}
+
+.indice__titulo {
+  font-size: var(--paso-1);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tenue);
+  margin-bottom: 0.75rem;
+}
+
+.indice__lista {
+  display: grid;
+  gap: 0.4rem;
+  /* Una sola columna en móvil, dos cuando hay sitio. Sin media queries. */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+}
+
+/* ---------------------------------------------------------- 7. contenido */
+.contenido > * + * {
+  margin-top: var(--paso-5);
+}
+
+.contenido {
+  max-width: var(--ancho-max);
+  margin-inline: auto;
+  padding: var(--paso-5) var(--paso-3);
+}
+
+.mercado__lista {
+  max-width: var(--medida);
+  padding-inline-start: 1.35rem;
+  margin-block: 1.25rem 1.5rem;
+  list-style: disc;
+}
+
+.mercado__lista li + li {
+  margin-top: 0.5rem;
+}
+
+.mercado__lista li::marker {
+  color: var(--acento);
+}
+
+/* ------------------------------------------------------------- 8. figuras */
+.mercado__figura {
+  margin-block: 0 1.75rem;
+}
+
+.mercado__imagen {
+  width: 100%;
+  /* Reserve la proporción para que la página no salte mientras carga */
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radio);
+  border: 1px solid var(--borde);
+}
+
+.mercado__pie {
+  margin-top: 0.6rem;
+  font-size: var(--paso-1);
+  color: var(--tenue);
+  max-width: var(--medida);
+}
+
+/* ---------------------------------------------------- 9. tarjetas de riesgo */
+.riesgo__rejilla {
+  display: grid;
+  gap: var(--paso-3);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  margin-block: 1.5rem 1.75rem;
+}
+
+.riesgo__tarjeta {
+  background-color: var(--fondo-suave);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: var(--paso-3);
+}
+
+.riesgo__tarjeta p {
+  font-size: var(--paso-1);
+  color: var(--tenue);
+  margin-bottom: 0;
+}
+
+.riesgo__tarjeta-titulo {
+  font-size: var(--paso-2);
+}
+
+/* ---------------------------------------------------------------- 10. pie */
+.pie {
+  max-width: var(--ancho-max);
+  margin-inline: auto;
+  padding: var(--paso-4) var(--paso-3) var(--paso-5);
+  border-top: 1px solid var(--borde);
+}
+
+.pie p {
+  color: var(--tenue);
+  font-size: var(--paso-1);
+  margin-bottom: 0.75rem;
+}
+
+.pie__aviso {
+  padding: var(--paso-2) var(--paso-3);
+  background-color: var(--fondo-suave);
+  border-left: 3px solid var(--acento);
+  border-radius: 0 var(--radio) var(--radio) 0;
+  font-size: var(--paso-2) !important;
+  color: var(--texto) !important;
+}
+
+.pie__volver {
+  margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------ 11. adaptive */
+/* A partir de aquí solo se ajusta el tamaño; la rejilla ya se adapta sola. */
+@media (min-width: 48rem) {
+  .cabecera,
+  .indice,
+  .contenido,
+  .pie {
+    padding-inline: var(--paso-5);
+  }
+}
+
+@media (min-width: 64rem) {
+  .mercado__figura {
+    float: inline-end;
+    /* La imagen se coloca al lado del texto cuando el ancho lo permite */
+    width: min(100%, 20rem);
+    margin-block: 0.25rem 1.5rem;
+    margin-inline-start: 2rem;
+  }
+}
+
+/* --------------------------------------------------------------- 12. motion */
+@media (prefers-reduced-motion: no-preference) {
+  a,
+  .riesgo__tarjeta,
+  .mercado__imagen {
+    transition: opacity 150ms ease, border-color 150ms ease;
+  }
+
+  .riesgo__tarjeta:hover {
+    border-color: var(--acento);
+  }
+
+  .mercado__imagen:hover {
+    opacity: 0.92;
+  }
+}
+
+/* Respeta siempre la preferencia del sistema: sin movimiento, sin transición. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

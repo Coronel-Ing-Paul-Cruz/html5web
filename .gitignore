@@ -1,0 +1,22 @@
+﻿# Cosas que no deben llegar al repo
+node_modules/
+package-lock.json
+.DS_Store
+Thumbs.db
+.env
+.env.*
+*.log
+
+# Cache y estado local de herramientas
+.opencode/cache/
+.cache/
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Herramientas locales: no forman parte del sitio publicado
+.opencode/
+opencode.jsonc
+AGENTS.md
